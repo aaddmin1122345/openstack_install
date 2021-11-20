@@ -13,9 +13,12 @@
 
 5   ./openstack_install.sh 或者sh openstack_install.sh
 
+
 使用方法2:
 
 找到右边的Releases,把压缩包下载下来,然后直接运行脚本即可
+
+建议使用方法1,后续更新只需要到该目录执行 git pull
 
 问题:
 
