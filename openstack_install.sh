@@ -6,14 +6,9 @@ daojishi(){
     ti1=`date +%s`
     ti2=`date +%s`
     i=$(($ti2 - $ti1 ))
-    echo -e " \033[1;91m
-    安装脚本将在$a秒之后开始运行!
-    安装脚本将在$a秒之后开始运行!
-    安装脚本将在$a秒之后开始运行!
-    认真阅读使用须知!
-    认真阅读使用须知!
-    认真阅读使用须知!
-    $b"
+    echo -e "安装脚本将在$a秒之后开始运行!
+    认真阅读使用须知!\n"
+    echo -e $b
     while [[ "$i" -ne "$a" ]]
     do
 	ti2=`date +%s`
@@ -21,7 +16,7 @@ daojishi(){
     done
 
 }
-daojishi 60 echo -e "使用须知:\n
+daojishi 60 '使用须知:\n
 \033[1;91m必须先手动把静态ip配置好,不然安装后ip变了可能就没了\n
 虚拟机系统版本必须为centos8\n
 虚拟机网卡需要必须选择为nat网卡\n
@@ -31,7 +26,7 @@ daojishi 60 echo -e "使用须知:\n
 遇到问题尽量自行百度解决\n
 实在无法解决请把 $HOME/openstack_install.log文件发我,方便我定位问题\n
 上述操作都没问题了,就等待安装
-如要取消安装请按ctrl+c"\n
+如要取消安装请按ctrl+c\n'
 
 echo -e "\033[1;92m开始安装..."
 echo -e "\033[1;92m配置selinux中..."
@@ -76,5 +71,5 @@ echo $passwd| awk -F "'" '{print "你的登陆帐号为:admin\n你的登录密�
 echo -e "\033[1;92m你的登陆地址是: $lip/dashboard"
 echo -e "\033[1;92m如果出现登陆地址以及帐号密码就说明安装成功啦~~~"
 echo -e "\033[36mgithub:https://github.com/qxqzx3489/openstack_install\n个人博客:https://qxqzx.xyz\n网站打不开请更换电脑dns为阿里巴巴提供的:223.5.5.5/223.6.6.6"
+}
 log |tee -a $HOME/openstack_install.log
-
