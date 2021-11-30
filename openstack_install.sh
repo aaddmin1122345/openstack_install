@@ -1,4 +1,5 @@
 #! /usr/bin/bash
+rm -rf $HOME/openstack_install.log
 log(){
 daojishi(){
     a=$1
@@ -53,7 +54,7 @@ sed -e 's|^mirrorlist=|#mirrorlist=|g' \
          /etc/yum.repos.d/CentOS-Linux-PowerTools.repo \
          /etc/yum.repos.d/CentOS-Linux-Plus.repo
 echo -e "\033[1;92m刷新源并切换默认网络管理为network..."
-yum makecache;dnf update;dnf install network-scripts -y
+yum makecache;dnf update -y;dnf install network-scripts -y
 systemctl stop NetworkManager && systemctl disable NetworkManager
 systemctl enable --now network
 echo -e "\033[1;92m安装centos-release-openstack-train中..."
@@ -72,4 +73,5 @@ echo -e "\033[1;92m你的登陆地址是: $lip/dashboard"
 echo -e "\033[1;92m如果出现登陆地址以及帐号密码就说明安装成功啦~~~"
 echo -e "\033[36mgithub:https://github.com/qxqzx3489/openstack_install\n个人博客:https://qxqzx.xyz\n网站打不开请更换电脑dns为阿里巴巴提供的:223.5.5.5/223.6.6.6"
 }
+
 log |tee -a $HOME/openstack_install.log
